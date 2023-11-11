@@ -385,11 +385,13 @@
                             //         dd($product_details);
                             //     }
                             // }
+                            $curr = Currency::where('is_default','=',1)->first();
                         @endphp
+                        @if($orders->count() > 0)
                         <div class="w7m89t0 w7m89t4i details-pane" data-testid="details-pane">
                             <div class="w7m89t0 w7m89thz">
 
-
+                                @foreach($orders as $order)
                                 <div class="w7m89t0 w7m89thz">
                                     <div class="NU7LAqm p-b-24">
                                         <div
@@ -397,11 +399,11 @@
                                             Orders with you<a class="tbody-6 VDmx6ji"
                                                 href="/activities/search/conversation?act_search_query=amine_haddoud&amp;orders_only=true"
                                                 target="_blank" rel="noopener noreferrer">Total
-                                                (1)</a></div>
+                                                ({{ $order->count() }})</a></div>
                                         <div class="EMv8VQD tbody-6 m-t-12" role="order-card">
                                             <div class="bmqYliz cf">
                                                 <img class="yYW950_ m-r-8" src=" 6d2b2a562da1ee568f0b4fd0297a748f.png" alt="create and integrate custom live chat">
-                                                <div class="text-semi-bold co-text-darker" role="amount">$70</div>
+                                                <div class="text-semi-bold co-text-darker" role="amount">{{ PriceHelper::showOrderCurrencyPrice($order->price, $curr) }}</div>
                                                 <div class="uqU3FqO">
                                                     <p class="w7m89t1z2 w7m89t156 w7m89t13d w7m89t6 w7m89t2">Due
                                                         Nov 7,
@@ -419,6 +421,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endforeach
 
                                 
                                 <div class="MYCOWEK">
@@ -473,6 +476,7 @@
                                 </div>
                             </div>
                         </div>
+                        @endif
                     </div>
                 </div>
             </article>

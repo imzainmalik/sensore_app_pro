@@ -99,6 +99,7 @@
                         class="product-style-2 owl-carousel owl-nav-hover-primary nav-top-right single-carousel dot-disable product-list e-bg-white">
 
                         @foreach ($vendor_products as $chunk)
+                        
                             <div class="item">
                                 <div class="row row-cols-1">
                                     @foreach ($chunk as $prod)
